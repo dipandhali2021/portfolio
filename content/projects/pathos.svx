@@ -1,0 +1,38 @@
+~~~
+title = "Pathos – Developer Activity Tracker"
+description = "VS Code extension that transforms local edits into shareable productivity insights."
+date = "2025-02-15"
+published = true
+featured = true
+tags = ["VS Code", "Node.js", "Productivity"]
+
+[image]
+url = "/images/projects/pathos.svg"
+alt = "Pathos activity monitor"
+
+[[links]]
+text = "Marketplace"
+url = "https://marketplace.visualstudio.com/items?itemName=DipanDhali.pathos"
+icon = "external"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/dipandhali2021/pathos"
+icon = "github"
+~~~
+
+# Pathos
+
+Pathos was born out of frustration with vague "10x productivity" claims and opaque metrics that fail to capture how developers actually spend their time. I wanted to create a private, opt-in way for indie developers and teams to gain genuine insights into their coding patterns without sacrificing privacy or simplicity.
+
+This VS Code extension transforms local development activity into meaningful, shareable productivity insights. Unlike traditional time-tracking tools that focus on crude hour counts, Pathos emphasizes understanding work patterns, language preferences, and sustainable coding rhythms.
+
+The extension provides secure GitHub OAuth integration with intelligent repository provisioning, allowing developers to spin up workspace-specific repositories directly from VS Code. Users can configure visibility settings, choose licensing options, and select from curated README templates—all without leaving their editor.
+
+At the core of Pathos is MiniWatch, a lightweight file watcher that captures edit bursts, commit cadence, and language focus patterns. Crucially, no raw code is ever transmitted—only anonymized activity metadata. This privacy-first approach ensures developers maintain full control over their intellectual property while still gaining valuable insights.
+
+The Gemini-powered summary system converts weeks of telemetry logs into narrative progress reports. These promptable insights can be formatted as meeting-ready highlights, personal retrospectives, or team performance overviews. Visual Mermaid dashboards complement the narrative reports with timeline views and streak charts that keep motivation high and provide clear progress visualization.
+
+Built entirely in TypeScript, Pathos runs with minimal overhead in VS Code while leveraging a companion Node.js service hosted on Render for OAuth flows and report generation. The architecture prioritizes performance and user privacy throughout.
+
+The extension crossed 50 installs with a 4.7 out of 5 star rating in its first month on the Visual Studio Code Marketplace, demonstrating strong early adoption and user satisfaction among developers seeking authentic productivity insights.

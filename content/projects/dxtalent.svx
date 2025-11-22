@@ -1,0 +1,38 @@
+~~~
+title = "DXTalent – AI DX Learning Platform"
+description = "DX-first learning marketplace with Gemini-generated lessons, recruiter-learners workflows, and Stripe monetization."
+date = "2025-11-05"
+published = true
+featured = true
+tags = ["DX", "Next.js", "Stripe", "Gemini"]
+
+[image]
+url = "/images/projects/dxtalent.svg"
+alt = "DXTalent dashboard mockup"
+
+[[links]]
+text = "Live"
+url = "https://dxtalent.vercel.app"
+icon = "external"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/dipandhali2021/DXTalent"
+icon = "github"
+~~~
+
+# DXTalent
+
+DXTalent is my answer to a question I kept hearing inside DX Teams in India: *"How do we make digital transformation training feel as personal as a mentor, but as scalable as a learning platform?"*
+
+The platform combines AI-powered content generation with role-based access control to deliver personalized learning experiences. Built on Next.js 15 with React Server Components, it leverages Gemini AI for intelligent lesson generation, Stripe for monetization, and a comprehensive gamification system to drive engagement.
+
+At its core, DXTalent bridges the gap between enterprise-grade digital transformation training and accessible, personalized education. The system serves three distinct personas—Learners, Recruiters, and Admins—each with tailored workflows and capabilities secured through JWT authentication.
+
+The platform features intelligent lesson generation where Gemini creates custom lesson plans, quizzes, and playbooks tailored to each user's role and progress. The monetization layer handles subscription tiers, onboarding flows, and marketplace payments through Stripe Billing with compliance-focused metadata tracking.
+
+Gamification plays a crucial role with six competitive leagues, twenty achievement badges, and server-side validation to ensure credibility remains earned, not gamed. The DX telemetry system computes auditable CI/CD maturity metrics from GitHub and CircleCI signals, allowing teams to visualize their practice improvements alongside curated lessons.
+
+Built with Next.js 15, React Server Components, Tailwind CSS, tRPC, Prisma, PostgreSQL, Docker, Gemini API, Stripe, and Radix UI / ShadCN components, DXTalent represents a complete end-to-end solution developed in just five weeks—from product discovery through interface design, API modeling, and deployment on Vercel and Render.
+
+The platform is currently piloting with two university innovation cells, demonstrating its practical application in real-world educational environments.

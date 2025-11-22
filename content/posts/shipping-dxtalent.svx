@@ -1,0 +1,23 @@
+~~~
+published_at = "2025-11-12"
+updated_at = "2025-11-12"
+description = "Notes from building DXTalent's AI-powered lessons, recruiter workflows, and gamification loop."
+tags = ["DX", "Product", "Case-Study"]
+
+[title]
+text = "Shipping DX Playbooks in 5 Weeks"
+~~~
+
+I started DXTalent because friends at IIITDM kept asking for a structured way to learn digital
+transformation skills without drowning in enterprise jargon. Here are a few lessons from sprinting the
+first version into the world:
+
+1. **Scope your AI surface area.** Gemini was great at drafting lesson blueprints, but only after I fed it
+   real DX maturity data and a templatized voice. Guardrails > magic.
+2. **Gamification must feel earned.** Six leagues and twenty badges sound fun until you try to prevent
+   cheating. I added server-side validation and human spot checks before unlocking anything.
+3. **Charge early.** Integrating Stripe from day one forced me to define what "value" meant for learners vs
+   recruiters. That clarity shaped the roadmap more than any OKR doc.
+
+I’m now layering in observability so that teams can see their CI/CD and culture metrics improve alongside
+curated lessons. If you want a walkthrough, ping me via the contact links below.
