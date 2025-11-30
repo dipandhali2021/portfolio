@@ -8,6 +8,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { PostsPage } from './pages/PostsPage';
+import { PostDetailPage } from './pages/PostDetailPage';
 import { TutorialsPage } from './pages/TutorialsPage';
 import { PhotosPage } from './pages/PhotosPage';
 import { SocialsPage } from './pages/SocialsPage';
@@ -58,6 +59,7 @@ function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/posts" element={<PostsPage />} />
+            <Route path="/posts/:slug" element={<PostDetailPage />} />
             <Route path="/tutorials" element={<TutorialsPage />} />
             <Route path="/photos" element={<PhotosPage />} />
             <Route path="/socials" element={<SocialsPage />} />

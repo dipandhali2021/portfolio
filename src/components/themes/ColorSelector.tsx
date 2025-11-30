@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
   useAccentColor,
   accentColors,
@@ -35,7 +35,7 @@ export const ColorSelector: React.FC = () => {
         ref={gridRef}
         className="relative grid grid-cols-7 gap-2.5 md:gap-1.5"
       >
-        {accentColors.map((color, index) => {
+        {accentColors.map((color) => {
           const isSelected = accentColor === color;
           const colorValue = getColorValue(color);
 
