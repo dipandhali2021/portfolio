@@ -12,55 +12,62 @@ import { TutorialsPage } from './pages/TutorialsPage';
 import { PhotosPage } from './pages/PhotosPage';
 import { SocialsPage } from './pages/SocialsPage';
 import { usePalette, useAccentColor } from './hooks/useTheme';
-import './App.css';
 
 function App() {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-	const [palette] = usePalette();
-	const [accentColor] = useAccentColor();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [palette] = usePalette();
+  const [accentColor] = useAccentColor();
 
-	// Initialize theme on mount
-	useEffect(() => {
-		document.documentElement.classList.remove('latte', 'frappe', 'macchiato', 'mocha');
-		document.documentElement.classList.add(palette);
-	}, [palette]);
+  // Initialize theme on mount
+  useEffect(() => {
+    document.documentElement.classList.remove(
+      'latte',
+      'frappe',
+      'macchiato',
+      'mocha'
+    );
+    document.documentElement.classList.add(palette);
+  }, [palette]);
 
-	useEffect(() => {
-		const colorValue = `var(--color-${accentColor})`;
-		document.documentElement.style.setProperty('--current-accent-color', colorValue);
-	}, [accentColor]);
+  useEffect(() => {
+    const colorValue = `var(--color-${accentColor})`;
+    document.documentElement.style.setProperty(
+      '--current-accent-color',
+      colorValue
+    );
+  }, [accentColor]);
 
-	const toggleSidebar = () => {
-		setIsSidebarOpen(!isSidebarOpen);
-	};
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
-	const closeSidebar = () => {
-		setIsSidebarOpen(false);
-	};
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
 
-	return (
-		<Router>
-			<div className="text-text mx-auto flex min-h-screen max-w-[90%] flex-col md:max-w-[80%]">
-				<Header toggleSidebar={toggleSidebar} />
-				<Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+  return (
+    <Router>
+      <div className="text-text mx-auto flex min-h-screen max-w-[90%] flex-col md:max-w-[80%]">
+        <Header toggleSidebar={toggleSidebar} />
+        <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
-				<main className="flex-1 px-0 py-8 md:px-5">
-					<Routes>
-						<Route path="/" element={<HomePage />} />
-						<Route path="/about" element={<AboutPage />} />
-						<Route path="/projects" element={<ProjectsPage />} />
-						<Route path="/projects/:slug" element={<ProjectDetailPage />} />
-						<Route path="/posts" element={<PostsPage />} />
-						<Route path="/tutorials" element={<TutorialsPage />} />
-						<Route path="/photos" element={<PhotosPage />} />
-						<Route path="/socials" element={<SocialsPage />} />
-					</Routes>
-				</main>
+        <main className="flex-1 px-0 py-8 md:px-5">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+            <Route path="/posts" element={<PostsPage />} />
+            <Route path="/tutorials" element={<TutorialsPage />} />
+            <Route path="/photos" element={<PhotosPage />} />
+            <Route path="/socials" element={<SocialsPage />} />
+          </Routes>
+        </main>
 
-				<Footer />
-			</div>
-		</Router>
-	);
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
