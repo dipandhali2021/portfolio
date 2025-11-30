@@ -33,7 +33,7 @@ export const projects: Project[] = [
         github: 'https://github.com/dipandhali2021/DXTalent',
         live: 'https://dxtalent.vercel.app',
         image: {
-            url: '/images/projects/dxtalent.svg',
+            url: '/images/projects/dxtalent.png',
             alt: 'DXTalent Project'
         },
         featured: true,

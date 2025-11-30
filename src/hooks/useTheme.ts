@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export type PaletteType = 'latte' | 'frappe' | 'macchiato' | 'mocha';
-export type AccentColor = 'rosewater' | 'flamingo' | 'pink' | 'mauve' | 'red' | 'maroon' | 'peach' | 'yellow' | 'green' | 'teal' | 'sky' | 'sapphire' | 'blue' | 'lavender';
+export type PaletteType = 'latte' | 'frappe' | 'macchiato' | 'mocha' | 'nord' | 'dracula';
+export type AccentColor = 'rosewater' | 'flamingo' | 'pink' | 'mauve' | 'red' | 'maroon' | 'peach' | 'yellow' | 'green' | 'teal' | 'sky' | 'sapphire' | 'blue' | 'lavender' | 'coral' | 'lime' | 'violet' | 'indigo' | 'rose' | 'mint' | 'amber' | 'crimson';
 
-export const paletteNames: PaletteType[] = ['latte', 'frappe', 'macchiato', 'mocha'];
-export const accentColors: AccentColor[] = ['rosewater', 'flamingo', 'pink', 'mauve', 'red', 'maroon', 'peach', 'yellow', 'green', 'teal', 'sky', 'sapphire', 'blue', 'lavender'];
+export const paletteNames: PaletteType[] = ['latte', 'frappe', 'macchiato', 'mocha', 'nord', 'dracula'];
+export const accentColors: AccentColor[] = ['rosewater', 'flamingo', 'pink', 'mauve', 'red', 'maroon', 'peach', 'yellow', 'green', 'teal', 'sky', 'sapphire', 'blue', 'lavender', 'coral', 'lime', 'violet', 'indigo', 'rose', 'mint', 'amber', 'crimson'];
 
 function getStoredValue<T>(key: string, defaultValue: T): T {
     if (typeof window === 'undefined') return defaultValue;
@@ -35,7 +35,7 @@ export function usePalette() {
 
     useEffect(() => {
         // Remove all theme classes
-        document.documentElement.classList.remove('latte', 'frappe', 'macchiato', 'mocha');
+        document.documentElement.classList.remove('latte', 'frappe', 'macchiato', 'mocha', 'nord', 'dracula');
         // Add the selected theme class
         document.documentElement.classList.add(palette);
         setStoredValue('palette', palette);
@@ -50,9 +50,38 @@ export function useAccentColor() {
     );
 
     useEffect(() => {
-        const colorValue = `var(--color-${accentColor})`;
-        document.documentElement.style.setProperty('--current-accent-color', colorValue);
+        if (typeof window === 'undefined') return;
+
+        // Use a small delay to ensure CSS variables are loaded
+        const applyColor = () => {
+            const root = document.documentElement;
+            
+            // Try to get the catppuccin-color variable directly
+            let computedColor = getComputedStyle(root).getPropertyValue(`--catppuccin-color-${accentColor}`).trim();
+            
+            // If not found, try the --color- prefix
+            if (!computedColor) {
+                computedColor = getComputedStyle(root).getPropertyValue(`--color-${accentColor}`).trim();
+            }
+            
+            if (computedColor && !computedColor.startsWith('var(')) {
+                // Set the actual color value
+                root.style.setProperty('--current-accent-color', computedColor);
+            } else {
+                // Fallback: use variable reference
+                root.style.setProperty('--current-accent-color', `var(--catppuccin-color-${accentColor})`);
+            }
+        };
+
+        // Apply immediately
+        applyColor();
+        
+        // Also apply after a short delay to ensure all styles are loaded
+        const timeoutId = setTimeout(applyColor, 50);
+        
         setStoredValue('accent-color', accentColor);
+
+        return () => clearTimeout(timeoutId);
     }, [accentColor]);
 
     return [accentColor, setAccentColorState] as const;
