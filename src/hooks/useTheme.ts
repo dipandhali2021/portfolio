@@ -55,15 +55,15 @@ export function useAccentColor() {
         // Use a small delay to ensure CSS variables are loaded
         const applyColor = () => {
             const root = document.documentElement;
-            
+
             // Try to get the catppuccin-color variable directly
             let computedColor = getComputedStyle(root).getPropertyValue(`--catppuccin-color-${accentColor}`).trim();
-            
+
             // If not found, try the --color- prefix
             if (!computedColor) {
                 computedColor = getComputedStyle(root).getPropertyValue(`--color-${accentColor}`).trim();
             }
-            
+
             if (computedColor && !computedColor.startsWith('var(')) {
                 // Set the actual color value
                 root.style.setProperty('--current-accent-color', computedColor);
@@ -75,10 +75,10 @@ export function useAccentColor() {
 
         // Apply immediately
         applyColor();
-        
+
         // Also apply after a short delay to ensure all styles are loaded
         const timeoutId = setTimeout(applyColor, 50);
-        
+
         setStoredValue('accent-color', accentColor);
 
         return () => clearTimeout(timeoutId);
