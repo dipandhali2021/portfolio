@@ -1,26 +1,73 @@
-# Nyx
+# React + TypeScript + Vite
 
-Nyx is my personal digital playground and the third iteration of my portfolio, designed to showcase my projects,
-experiments, and journey in the world of software development.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-<a href="https://nyx.jasoncameron.dev" target="_blank">
-  <img src=".github/homepage.jpg" alt="Nyx - Jason Cameron's Playground" width="100%" />
-</a>
+Currently, two official plugins are available:
 
-<div align="center">
-  <a href="https://abacus.jasoncameron.dev" target="_blank">
-    <img height="20px" src="https://abacus.jasoncameron.dev/hit/jasoncameron/github-nyx/shield?font=jetbrains-mono&text=visits&bgcolor=e59b4f&color=48ACF0&style=flat-square" alt="Visitor Count"/>
-  </a>
-  <img src="https://img.shields.io/github/last-commit/JasonLovesDoggo/nyx?style=flat-square&logo=github&label=last%20commit" alt="GitHub last commit"/>
-  <img src="https://img.shields.io/github/license/JasonLovesDoggo/nyx?style=flat-square&color=blue" alt="GitHub license"/>
-  <img src="https://img.shields.io/badge/Svelte-v5-FF3E00?style=flat-square&logo=svelte" alt="Svelte"/>
-</div>
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Inspirations
+## React Compiler
 
-Nyx draws inspiration from various innovative websites and projects. To view my wild brainstorming process, check out
-the <a target="_blank" href="https://notes.jasoncameron.dev/Website">Ideas Board</a>.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the ESLint configuration
 
-Thank you for visiting — and please leave a ⭐ if you likey!
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
